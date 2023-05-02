@@ -1,2 +1,2 @@
-# Livraria-Teste
- Livraria-Teste Django Rest Framework
+# Livraria
+ Livraria Django Rest Framework
