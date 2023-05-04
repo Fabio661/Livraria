@@ -15,6 +15,9 @@ class TesteOrdemViewSet(APITestCase):
     client = APIClient()
     
     def setUp(self):
+        self.user = UsuarioFactory()
+        self.client.force_authenticate(user=self.user)
+        
         self.categoria = CategoriaFactory(titulo='tecnologia')
         self.produto = ProdutoFactory(titulo='mouse', preco=100, categoria=[self.categoria])
         self.ordem = OrdemFactory(produto=[self.produto])
@@ -26,11 +29,11 @@ class TesteOrdemViewSet(APITestCase):
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
-        ordem_data = json.loads(response.content)[0]
-        self.assertEqual(ordem_data['produto'][0]['titulo'], self.produto.titulo)
-        self.assertEqual(ordem_data['produto'][0]['preco'], self.produto.preco)
-        self.assertEqual(ordem_data['produto'][0]['ativo'], self.produto.ativo)
-        self.assertEqual(ordem_data['produto'][0]['categoria'][0]['titulo'], self.categoria.titulo)
+        ordem_data = json.loads(response.content)
+        self.assertEqual(ordem_data['results'][0]['produto'][0]['titulo'], self.produto.titulo)
+        self.assertEqual(ordem_data['results'][0]['produto'][0]['preco'], self.produto.preco)
+        self.assertEqual(ordem_data['results'][0]['produto'][0]['ativo'], self.produto.ativo)
+        self.assertEqual(ordem_data['results'][0]['produto'][0]['categoria'][0]['titulo'], self.categoria.titulo)
         
     def teste_create_ordem(self):
         usuario = UsuarioFactory()
