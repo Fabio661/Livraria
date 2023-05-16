@@ -23,7 +23,7 @@ jobs:
 
       - name: Test
         run: |
-          poetry run python manage.py test
+          python manage.py test
       - name: Wemake Python Stylguide
         uses: wemake-services/wemake-python-styleguide@0.16.0
         continue-on-error: true
