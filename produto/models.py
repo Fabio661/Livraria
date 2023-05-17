@@ -8,7 +8,7 @@ class Categoria(models.Model):
     descricao = models.CharField(max_length=200, blank=True, null=True)
     ativo = models.BooleanField(default=True)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.titulo
     
 class Produto(models.Model):
@@ -18,3 +18,5 @@ class Produto(models.Model):
     ativo = models.BooleanField(default=True)
     categoria = models.ManyToManyField(Categoria, blank=True)
 
+    def __str__(self):
+        return self.titulo
