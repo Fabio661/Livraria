@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'ordem',
     'produto',
     'debug_toolbar',
-    'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +131,11 @@ STATIC_URL = "static/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 # Default primary key field type
