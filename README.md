@@ -15,7 +15,7 @@ Docker && docker-compose
 1. Clone o projeto
 
    ```shell
-   git clone git@github.com:drsantos20/bookstore.git
+   git clone git@github.com:Fabio661/livraria.git
    ```
 
 2. Rode o projeto na sua maquina:
